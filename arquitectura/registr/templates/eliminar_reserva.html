@@ -1,0 +1,55 @@
+<!-- templates/eliminar_reserva.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Reserva</title>
+</head>
+<body>
+    <h2>Detalles de la Reserva</h2>
+    <p>ID de Reserva: {{ reserva.id_reserva }}</p>
+    <p>RUT: {{ reserva.rut }}</p>
+    <p>Fecha de Reserva: {{ reserva.fecha }}</p>
+    <p>Hora de Reserva: {{ reserva.hora }}</p>
+    <p>Médico: {{ reserva.medico }}</p>
+
+    <form method="post" action="{% url 'eliminar_reserva' reserva.id_reserva %}">
+        {% csrf_token %}
+        <button type="submit">Eliminar Reserva</button>
+    </form>
+
+    <a href="{% url 'login' %}">Volver a la Página Principal</a>
+</body>
+<style>
+    /* Estilos para el botón */
+    .boton-menu-container {
+      position: fixed;  /* Establece la posición fija */
+      top: 10px;        /* Distancia desde la parte superior */
+      left: 10px;       /* Distancia desde la izquierda */
+      z-index: 999;     /* Valor alto para que esté sobre otros elementos */
+    }
+  
+    .boton-menu {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .boton-menu:hover {
+      background-color: #45a049;
+    }
+  </style>
+  
+  <div class="boton-menu-container">
+    <a href="{% url 'inicio' %}">
+      <button class="boton-menu">MENU</button>
+    </a>
+  </div>
+  
+</html>

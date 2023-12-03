@@ -1,0 +1,122 @@
+<!-- register.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                {% if message.tags %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <h1>Registro de Nuevo Usuario</h1>
+        
+        <label for="id_rut">RUT:</label>
+        {{ form.rut }}<br><br>
+
+        <label for="id_email">Correo electrónico:</label>
+        {{ form.email }}<br><br>
+
+        <label for="id_username">Nombre de usuario:</label>
+        {{ form.username }}<br><br>
+
+        <label for="id_password">Contraseña:</label>
+        {{ form.password }}<br><br>
+
+        <button type="submit">Registrarse</button>
+    </form>
+</body>
+<style>
+    /* Estilos para el botón */
+    .boton-menu-container {
+      position: fixed;  /* Establece la posición fija */
+      top: 10px;        /* Distancia desde la parte superior */
+      left: 10px;       /* Distancia desde la izquierda */
+      z-index: 999;     /* Valor alto para que esté sobre otros elementos */
+    }
+  
+    .boton-menu {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .boton-menu:hover {
+      background-color: #45a049;
+    }
+  </style>
+  
+  <div class="boton-menu-container">
+    <a href="{% url 'inicio' %}">
+      <button class="boton-menu">MENU</button>
+    </a>
+  </div>
+  
+</html>

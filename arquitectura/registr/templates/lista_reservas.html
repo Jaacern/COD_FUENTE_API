@@ -1,0 +1,76 @@
+<!-- lista_reservas.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Reservas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Lista de Reservas</h2>
+    <ul>
+        {% for reserva in reservas %}
+            <li>
+                {{ reserva.id }} - {{ reserva.fecha }} - {{ reserva.hora }} - {{ reserva.medico }}
+                <form method="post" action="{% url 'eliminar_reserva' reserva.id_reserva%}">
+                    {% csrf_token %}
+                    <button type="submit">Eliminar Reserva</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'iniciar_sesion' %}">Volver a la Página Principal</a>
+</body>
+</html>
